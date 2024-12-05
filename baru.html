@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Kelas XII TPM 2</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('bengkel4.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: black;
+            animation: moveBackground 60s linear infinite;
+        }
+
+        /* Animation to make the background move */
+        @keyframes moveBackground {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(33, 37, 41, 0.8);
+            padding: 10px 20px;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            color: #d3d3d3;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .navbar img {
+            height: 80px;
+            margin-left: 20px;
+            margin-right: 20px;
+            background: none;
+            border-radius: 0;
+        }
+
+        .search-container {
+            display: none;
+        }
+
+        .card-container {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 calc(30% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery {
+            display: none; /* Galeri disembunyikan secara default */
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 500px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        #jadwalPelajaran table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: #212529;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        #jadwalPelajaran th,
+        #jadwalPelajaran td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        #jadwalPelajaran th {
+            background-color: #212529;
+            color: white;
+        }
+    </style>
+    <script>
+        function toggleCards(cardType) {
+            const cardContainers = ['siswaCards', 'guruCards', 'piketCards', 'strukturCards', 'gallery', 'jadwalPelajaran', 'kegiatanKelas'];
+
+            cardContainers.forEach(id => {
+                const container = document.getElementById(id);
+                if (container) {
+                    container.style.display = id === cardType ? "flex" : "none";
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1 style="color: white; margin-right: 20px;">Website Kelas XII TPM 2</h1>
+        <h2 class="logo-container">
+            <img src="tpm.png" alt="Logo 1">
+            <img src="logosmk1.png" alt="Logo 2">
+        </h2>
+        <a href="javascript:void(0);" onclick="toggleCards('siswaCards')">Data Siswa</a>
+        <a href="javascript:void(0);" onclick="toggleCards('guruCards')">Data Guru</a>
+        <a href="javascript:void(0);" onclick="toggleCards('piketCards')">Piket Kelas</a>
+        <a href="javascript:void(0);" onclick="toggleCards('strukturCards')">Struktur Kelas</a>
+        <a href="javascript:void(0);" onclick="toggleCards('gallery')">Galeri Foto</a>
+        <a href="javascript:void(0);" onclick="toggleCards('jadwalPelajaran')">Jadwal Pelajaran</a>
+        <a href="javascript:void(0);" onclick="toggleCards('kegiatanKelas')">Kegiatan Kelas</a>
+        <div class="search-container">
+            <input type="text" placeholder="Search">
+            <button type="button">Search</button>
+        </div>
+    </div>
+
+     
+    <!-- Konten Data Siswa -->
+    <div id="siswaCards" class="card-container"style="display: none:">
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>KEVIN PUTRA PUJI ARDIANSYAH</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0062798857</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2006-09-18</p>
+            <p>Alamat: Ds.Remen</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>KHOIRUR A'BID ALFARISY</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0066721694</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2006-02-03</p>
+            <p>Alamat: Dsn.Jamong</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>Khoirur rizki</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0062100367</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2006-02-20</p>
+            <p>Alamat: Ds.Klutuk</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>M. ALVIN ADIANSYAH</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN:0071350826</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2007-02-03</p>
+            <p>Alamat: jl.Semarang</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>M. CITRA FRENGKI UTOMO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0078783986</p>
+            <p>Tempat Lahir:TUBAN</p>
+            <p>Tgl Lahir: 2007-01-03</p>
+            <p>Alamat: JL.DESA REMEM</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>M. NAJA ARJU FADZLIK</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0075237935</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-08-16</p>
+            <p>Alamat: Ds.Sumberarum</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MAHESA QURNIAWAN ADYDTYA PUTRA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0062876756</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-06-16</p>
+            <p>Alamat: Desa Sumberarum</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MAHFUD ZAINUR ROUF</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0073973672</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-02-19</p>
+            <p>Alamat: DASIN</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MARDI TRIA CAHYONO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0058045155</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-03-05</p>
+            <p>Alamat:Desa Sumberarum</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MOCHAMAD SYIFUL ASROR</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0079378761</p>
+            <p>Tempat Lahir: REMBANG</p>
+            <p>Tgl Lahir: 2007-04-30</p>
+            <p>Alamat: Ngampelrejo Bancar</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MOCHAMMAD GALEH MIFTAKUL HUDH</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0068306043</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2006-03-25</p>
+            <p>Alamat: Dsn. Jamong</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MOKHAMAD SHOBRONI</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0071906092</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-03-19</p>
+            <p>Alamat: SOTANG</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MUCHAMMAD ILHAM RAMADHANI</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0065843281</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-10-20</p>
+            <p>Alamat: DSN.KETAPANG</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>MUCHLAS RYO PRADITA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0064876133</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2006-07-27</p>
+            <p>Alamat: REMEM</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto">
+            <h3>MUHAMMAD BINTANG ALEGRA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0072759316</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2007-01-16</p>
+            <p>Alamat: BELIKANGET</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>MUHAMMAD HUSNI HABIBI</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0079709933</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-03-01</p>
+            <p>Alamat: JL. DESA REMEN</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>MUHAMMAD MAKHRUS ROFIK UDIN</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0059663300</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2005-07-01</p>
+            <p>Alamat: DSN MAMER</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>MUHAMMAD SHOFYAN ASSYAURI</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0066161038</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-05-20</p>
+            <p>Alamat: DESA Klutuk</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>MUKTABAR ARGYA AL WALIUDDIN</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0074200989</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2007-04-24</p>
+            <p>Alamat: Ds.SUKOLILO</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>NGARISKIANTO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0061222438</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-12-03</p>
+            <p>Alamat:Jalan Desa Ngampelrejo</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>NOVA BERTA ARDIANTO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0076973492</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-04-28</p>
+            <p>Alamat: DS.SIDOMULYO</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>NUR CAHYO BUDI UTOMO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN:0073170393</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-05-19</p>
+            <p>Alamat: BELIKANGET</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>NURMAN AFIK SETYAWAN</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0063491435</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2006-10-20</p>
+            <p>Alamat: KARANGREJO-JENU</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>PRADIKA DAVA FEBRI WIDIANTO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0072913408</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2007-02-02</p>
+            <p>Alamat: DESA Klutuk</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>RIFQI DWI ANDIKA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0074833464</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir: 2007-06-28</p>
+            <p>Alamat: JLN RAYA SEMARANG</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>ROHID HAIZUSSYAROF</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0071006106</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2007-04-16</p>
+            <p>Alamat: Desa Karangasem</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>ROUF ULLIN NUHA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0066897005</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2006-09-28</p>
+            <p>Alamat:DESA SUMURGENENG</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>SAHRUR RIZKI MAULANA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0069737729</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2006-11-02</p>
+            <p>Alamat: DESA Sumberarum</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>SANDI ERLANGGA</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0063729457</p>
+            <p>Tempat Lahir: TUBAN</p>
+            <p>Tgl Lahir:2006-10-23</p>
+            <p>Alamat: JL GLONDONGGEDE</p>
+        </div>
+        <div class="card">
+            <img src="pakoti.png" alt="Foto PUJI">
+            <h3>SHOBIKUL AMIN</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN:0071135353</p>
+            <p>Tempat Lahir:TUBAN></p>
+            <p>Tgl Lahir: 2007-04-28</p>
+            <p>Alamat:JL. DS.CINGKLUNG</p>
+        </div>
+        <div class="card">
+            <img src="absen1.jpg" alt="Foto PUJI">
+            <h3>TAUFIQ ABIDIN</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0067131118</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2006-03-29</p>
+            <p>Alamat: Dsn. Plajan</p>
+        </div>
+        <div class="card">
+            <img src="bengkel1.jpg" alt="Foto PUJI">
+            <h3>TEGUH SUGIARTO</h3>
+            <p>Kelas: XII TPM 2</p>
+            <p>Jenis Kelamin: Laki-Laki</p>
+            <p>NISN: 0075534164</p>
+            <p>Tempat Lahir: Tuban</p>
+            <p>Tgl Lahir: 2007-03-17</p>
+            <p>Alamat: Ds.Mliwang</p>
+        </div>
+        
+    </div>
+
+    <!-- Konten Data Guru -->
+    <div id="guruCards" class="card-container"style="display: none:">
+        <div class="card">
+            <img src="buma.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>Rohimatus Sholihah, S.Pd.I.</h3>
+            <p>Tgl Lahir: 1989-04-08</p>
+            <p>Jabatan: PAI</p>
+        </div>
+        <div class="card">
+            <img src="bundra.jpeg" alt="Foto Ainun Nisa">
+            <h3>CANDRA WULANDARI, S.Pd., Gr.</h3>
+            <p>Jabatan: Guru Matematika</p>
+            <p>Alamat : Pulogede, Kec. Tambakboyo</p>
+        </div>
+        <div class="card">
+            <img src="patoniy.jpeg" alt="Foto Nuranisah">
+            <h3>ANTHONY SALIM MASRIKAN, S.Pd</h3>
+            <p>Jabatan: Guru Produktif</p>
+            <p>Alamat : Bojonegoro</p>
+        </div>
+        <div class="card">
+            <img src="bapak.jpg" alt="Foto Nuranisah">
+            <h3>KHOTIBUL UMAM, S.Pd.</h3>
+            <p>Jabatan: Guru Produktif pilihan</p>
+            <p>Alamat: Kali Untu Kec. Jenu</p>
+        </div>
+        <div class="card">
+            <img src="buda.jpeg" alt="Foto Nuranisah">
+            <h3>Bu Ridha Novitasari</h3>
+            <p>Jabatan: Guru Bahasa Jawa</p>
+            <P>Alamat : Siding, Kec. Bancar</P>
+        </div>
+        <div class="card">
+            <img src="butut.jpg" alt="Foto Nuranisah">
+            <h3>Bu Tutik Karlina</h3>
+            <p>Jabatan: Guru PPkN</p>
+            <P>Alamat: Bancar</P>
+        </div>
+        <div class="card">
+            <img src="bufaridatus.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>Faridatus Sya'adah,S.S</h3>
+            <p>Tgl Lahir: 1985-06-30</p>
+            <p>Jabatan: Guru Bahasa Inggris</p>
+        </div>
+        <div class="card">
+            <img src="paha.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>M.Hasan Arrosid</h3>
+            <p>Tgl Lahir: 1991-03-10</p>
+            <p>Jabatan: PKK</p>
+        </div>
+        <div class="card">
+            <img src="bunurul.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>Nurul Zaidah, S.Pd.Gr.</h3>
+            <p>Tgl Lahir: 1984-04-17</p>
+            <p>Jabatan: BK</p>
+        </div>
+        <div class="card">
+            <img src="bumiratus.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>Miratus Sholihah, S.Pd.Gr.</h3>
+            <p>Tgl Lahir: 1988-08-10</p>
+            <p>Jabatan: Bahasa Indonesia</p>
+        </div>
+        <div class="card">
+            <img src="kajur.jpg" alt="Foto Rohimatus Sholihah">
+            <h3>M.fathu Rahman Afandi, S.Pd.</h3>
+            <p>Tgl Lahir: 1994-12-06</p>
+            <p>Jabatan: Guru Produktif</p>
+        </div>
+        <div class="card">
+            <img src="pakdandik.jpeg" alt="Foto Rohimatus Sholihah">
+            <h3>Dandik Syaifudin, S.T</h3>
+            <p>Tgl Lahir: 1991-07-11</p>
+            <p>Jabatan: Produktif</p>
+        </div>
+
+
+    </div>
+
+    <!-- Piket Kelas Section -->
+    <div id="piketCards" class="card-container">
+        <div class="card">
+            <h3>Senin</h3>
+            <p>Kevin Putra Puji Ardiansyah</p>
+            <p>Khoirur A'bid Alfarisy</p>
+            <p>Khoirur Rizki</p>
+            <p>M. Alvin Adiansyah</p>
+            <p>M. Citra Frengki Utomo</p>
+            <p>M. Naja Fadzlik</p>
+        </div>
+        <div class="card">
+            <h3>Selasa</h3>
+            <p>Mahesa Qurniawan Adydtya Putra</p>
+            <p>Mahfud Zainur Rouf</p>
+            <p>Mardi Tria Cahyono</p>
+            <p>Mochamad Syaiful Asror</p>
+            <p>Mochammad Galeh Miftakul Hudh</p>
+            <p>Mokhamad Shobroni</p>
+        </div>
+        <div class="card">
+            <h3>Rabu</h3>
+            <p>Muchammad Ilham Ramadhani</p>
+            <p>Muchlas Ryo Pradita</p>
+            <p>Muhammad Bintang Alegra</p>
+            <p>Muhammad Husni Habibi</p>
+            <p>Muhammad Majhrus Rofik Udin</p>
+            <p>Muhammad Shofyan Assyauri</p>
+        </div>
+        <div class="card">
+            <h3>Kamis</h3>
+            <p>Muktabar Argya Al Waliuddin</p>
+            <p>Ngariskianto</p>
+            <p>Nova Berta Ardianto</p>
+            <p>Nur Cahyo Budi Utomo</p>
+            <p>Nurman Afik Setyawan</p>
+            <p>Pradika Dava Febri Widianto</p>
+        </div>
+        <div class="card">
+            <h3>Jum'at</h3>
+            <p>Rifqi Dwi Andika</p>
+            <p>Rohid Haizussyarof</p>
+            <p>Rouf Ullin Nuha</p>
+            <p>Sahrul Rizki Maulana</p>
+            <p>Sandi Erlangga</p>
+            <p>Shobikul Amin</p>
+            <p>Taufiq Abidin</p>
+            <p>Teguh Sugiarto</p>
+        </div>
+    </div>
+
+            <!-- Konten Struktur Kelas -->
+        <div id="strukturCards" class="card-container">
+            <img src="AA.png" alt="Struktur Kelas XII TPM 2">
+        </div>
+
+        <!-- Galeri Foto -->
+        <div id="gallery" class="gallery">
+            <img src="bengkel6.jpg" alt="Gallery Image 1">
+            <img src="bengkel2.jpg" alt="Gallery Image 2">
+            <img src="bengkel3.jpg" alt="Gallery Image 3">
+            <img src="bengkel5.jpeg" alt="Gallery Image 4">
+        </div>
+
+        <!-- Konten Jadwal Pelajaran -->
+        <div id="jadwalPelajaran" class="card-container"style="display: none:">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Pelajaran</th>
+                        <th>Waktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">Senin</td>
+                        <td>BIG</td>
+                        <td>07:40 - 09:00</td>
+                    </tr>
+                    <tr>
+                        <td>PAI</td>
+                        <td>09:00 - 11:20</td>
+                    </tr>
+                    <tr>
+                        <td>PKK</td>
+                        <td>11:20 - 15:10</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5">Selasa</td>
+                        <td>Produktif Pilihan</td>
+                        <td>07:00 - 08:20</td>
+                    </tr>
+                    <tr>
+                        <td>BK</td>
+                        <td>08:20 - 09:00</td>
+                    </tr>
+                    <tr>
+                        <td>Matematika</td>
+                        <td>09:00 - 11:20</td>
+                    </tr>
+                    <tr>
+                        <td>Bahasa Indonesia</td>
+                        <td>11:20 - 13:50</td>
+                    </tr>
+                    <tr>
+                        <td>Bahasa Jawa</td>
+                        <td>13:50 - 15:10</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Rabu</td>
+                        <td>Produktif</td>
+                        <td>07:00 - 13:50</td>
+                    </tr>
+                    <tr>
+                        <td>Produktif</td>
+                        <td>13:50 - 15:10</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Kamis</td>
+                        <td>Produktif pilihan</td>
+                        <td>07:00 - 08:20</td>
+                    </tr>
+                    <tr>
+                        <td>Produktif</td>
+                        <td>08:20 - 13:50</td>
+                    </tr>
+                    <tr>
+                        <td>Produktif</td>
+                        <td>13:50 - 15:10</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Jum'at</td>
+                        <td>Ppkn</td>
+                        <td>07:00 - 08:20</td>
+                    </tr>
+                    <tr>
+                        <td>Big</td>
+                        <td>08:20 - 09:40</td>
+                    </tr>
+                    <tr>
+                        <td>Produktif</td>
+                        <td>09:40 - 11:20</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+         <!-- Konten Kegiatan Kelas -->
+        <div id="kegiatanKelas" class="card-container">
+            <div class="card">
+                <h3>Kegiatan 1</h3>
+                <p>KELAS 12 TPM MELAKUKAN KEGIATAN MAGANG PADA BULAN OKTOBERS</p>
+            </div>
+        </div>
+</body>
+
+</html>
+
+
